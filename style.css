@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+}
+.container .inputs .row{
+    margin-top: 10px;
+    
+}
+.container .inputs{
+    padding: 15px;
+}
+.container .inputs{
+    margin-top: 10px;
+}
+.container .inputs input[type=text]{
+    margin-bottom:10px; 
+}
+.container .quadro-content{
+    margin-top: 15px;
+}
+.sticky-header{
+    position: sticky;
+    top: 0;
+}
