@@ -115,7 +115,8 @@ async function buscar_programacao(){
                  descricaoSaida: programacao.quadro.tabelas[tabela].trechos[trecho].inicio.descricao.slice(0,1),
                  descricaoChegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.descricao.slice(0,1),
                  saida: programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.length),
-                 chegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.length)
+                 chegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.length),
+                 empresa:programacao.quadro.tabelas[tabela].trechos[trecho].empresa
                  }//json
                  empresas.push(programacao.quadro.tabelas[tabela].trechos[trecho].empresa);
             }//if
@@ -128,7 +129,8 @@ async function buscar_programacao(){
                  descricaoSaida: programacao.quadro.tabelas[tabela].trechos[trecho].inicio.descricao.slice(0,1),
                  descricaoChegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.descricao.slice(0,1),
                  saida: programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.length),
-                 chegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.length)
+                 chegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.length),
+                 empresa:programacao.quadro.tabelas[tabela].trechos[trecho].empresa
                 }//json
                 empresas.push(programacao.quadro.tabelas[tabela].trechos[trecho].empresa);
             }//if
@@ -140,7 +142,8 @@ async function buscar_programacao(){
                     descricaoSaida: programacao.quadro.tabelas[tabela].trechos[trecho].inicio.descricao.slice(0,1),
                     descricaoChegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.descricao.slice(0,1),
                     saida: programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.length),
-                    chegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.length)
+                    chegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.length),
+                    empresa:programacao.quadro.tabelas[tabela].trechos[trecho].empresa
                 }//json
                 empresas.push(programacao.quadro.tabelas[tabela].trechos[trecho].empresa);
             }//if
@@ -152,7 +155,8 @@ async function buscar_programacao(){
                     descricaoSaida: programacao.quadro.tabelas[tabela].trechos[trecho].inicio.descricao.slice(0,1),
                     descricaoChegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.descricao.slice(0,1),
                     saida: programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].inicio.horario.length),
-                    chegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.length)
+                    chegada: programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.slice(programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.indexOf('T')+1,programacao.quadro.tabelas[tabela].trechos[trecho].fim.horario.length),
+                    empresa:programacao.quadro.tabelas[tabela].trechos[trecho].empresa
                 }//json
                 empresas.push(programacao.quadro.tabelas[tabela].trechos[trecho].empresa);
             }//if
@@ -354,6 +358,7 @@ escrever_tabela = () =>{
         for(let linha_tabela=0;linha_tabela<max;linha_tabela++){
             let tr = tabela.insertRow();
 
+
             let tabelaHorario = tr.insertCell();
             let horario1 = tr.insertCell();
             let horario2 = tr.insertCell();
@@ -369,7 +374,11 @@ escrever_tabela = () =>{
                 tabelaHorario.innerText = primeiro_posto[linha_tabela].tabela+'  '+primeiro_posto[linha_tabela].descricaoSaida;
                 horario1.innerText = primeiro_posto[linha_tabela].saida;
                 horario2.innerText = primeiro_posto[linha_tabela].chegada;
-                descricaoInfo.innerText = primeiro_posto[linha_tabela].descricaoChegada;
+                descricaoInfo.innerText = primeiro_posto[linha_tabela].descricaoChegada+' - '+primeiro_posto[linha_tabela].empresa;
+    
+                horario2.setAttribute('data-bs-toggle','popover');
+                horario2.setAttribute('title','Minutos');
+                horario2.setAttribute('data-bs-content',calcular_minutos(primeiro_posto[linha_tabela].saida,primeiro_posto[linha_tabela].chegada));
             }
             catch(error){
                 console.log(error);
@@ -380,7 +389,12 @@ escrever_tabela = () =>{
                 tabelaHorario2.innerText = segundo_posto[linha_tabela].tabela+'  '+segundo_posto[linha_tabela].descricaoSaida;
                 horario3.innerText = segundo_posto[linha_tabela].saida;
                 horario4.innerText = segundo_posto[linha_tabela].chegada;
-                descricaoInfo2.innerText = segundo_posto[linha_tabela].descricaoChegada;
+                descricaoInfo2.innerText = segundo_posto[linha_tabela].descricaoChegada+' - '+segundo_posto[linha_tabela].empresa;
+    
+                horario4.setAttribute('data-bs-toggle','popover');
+                horario4.setAttribute('title','Minutos');
+                horario4.setAttribute('data-bs-content',calcular_minutos(segundo_posto[linha_tabela].saida,segundo_posto[linha_tabela].chegada));
+    
             }
             catch(error){
                 console.log(error);
@@ -403,7 +417,8 @@ escrever_tabela = () =>{
                     descricaoSaida: segundo_posto[i].descricaoSaida,
                     descricaoChegada: segundo_posto[i].descricaoChegada,
                     saida: segundo_posto[i].saida,
-                    chegada: segundo_posto[i].chegada
+                    chegada: segundo_posto[i].chegada,
+                    empresa:segundo_posto[i].empresa
                 }
                 segundo_posto.splice(i,1);
                 i=0;
@@ -521,6 +536,8 @@ escrever_tabela = () =>{
         cabecalho15.innerText = nome_primeiro_posto;
         cabecalho16.innerText = 'Descrição';
 
+        th.classList.add('sticky-header');
+
         let tamanho = [];
         tamanho.push(primeiro_posto.length);
         tamanho.push(segundo_posto.length);
@@ -557,7 +574,11 @@ escrever_tabela = () =>{
                 tabelaHorario.innerText = primeiro_posto[linha_tabela].tabela+'  '+primeiro_posto[linha_tabela].descricaoSaida;
                 horario1.innerText = primeiro_posto[linha_tabela].saida;
                 horario2.innerText = primeiro_posto[linha_tabela].chegada;
-                descricaoInfo.innerText = primeiro_posto[linha_tabela].descricaoChegada;
+                descricaoInfo.innerText = primeiro_posto[linha_tabela].descricaoChegada+' - '+primeiro_posto[linha_tabela].empresa;
+
+                horario2.setAttribute('data-bs-toggle','popover');
+                horario2.setAttribute('title','Minutos');
+                horario2.setAttribute('data-bs-content',calcular_minutos(primeiro_posto[linha_tabela].saida,primeiro_posto[linha_tabela].chegada));
             }
             catch(error){
                 console.log(error);
@@ -568,7 +589,11 @@ escrever_tabela = () =>{
                 tabelaHorario2.innerText = quarto_posto[linha_tabela].tabela+'  '+quarto_posto[linha_tabela].descricaoSaida;
                 horario3.innerText = quarto_posto[linha_tabela].saida;
                 horario4.innerText = quarto_posto[linha_tabela].chegada;
-                descricaoInfo2.innerText = quarto_posto[linha_tabela].descricaoChegada;
+                descricaoInfo2.innerText = quarto_posto[linha_tabela].descricaoChegada+' - '+quarto_posto[linha_tabela].empresa;
+
+                horario4.setAttribute('data-bs-toggle','popover');
+                horario4.setAttribute('title','Minutos');
+                horario4.setAttribute('data-bs-content',calcular_minutos(quarto_posto[linha_tabela].saida,quarto_posto[linha_tabela].chegada));
             }
             catch(error){
                 console.log(error);
@@ -579,7 +604,11 @@ escrever_tabela = () =>{
                 tabelaHorario3.innerText = terceiro_posto[linha_tabela].tabela+'  '+terceiro_posto[linha_tabela].descricaoSaida;
                 horario5.innerText = terceiro_posto[linha_tabela].saida;
                 horario6.innerText = terceiro_posto[linha_tabela].chegada;
-                descricaoInfo3.innerText = terceiro_posto[linha_tabela].descricaoChegada;
+                descricaoInfo3.innerText = terceiro_posto[linha_tabela].descricaoChegada+' - '+terceiro_posto[linha_tabela].empresa;
+
+                horario6.setAttribute('data-bs-toggle','popover');
+                horario6.setAttribute('title','Minutos');
+                horario6.setAttribute('data-bs-content',calcular_minutos(terceiro_posto[linha_tabela].saida,terceiro_posto[linha_tabela].chegada));
                 }
             catch(error){
                 console.log(error);
@@ -590,7 +619,11 @@ escrever_tabela = () =>{
                 tabelaHorario4.innerText = segundo_posto[linha_tabela].tabela+'  '+segundo_posto[linha_tabela].descricaoSaida;
                 horario7.innerText = segundo_posto[linha_tabela].saida;
                 horario8.innerText = segundo_posto[linha_tabela].chegada;
-                descricaoInfo4.innerText = segundo_posto[linha_tabela].descricaoChegada;
+                descricaoInfo4.innerText = segundo_posto[linha_tabela].descricaoChegada+' - '+segundo_posto[linha_tabela].empresa;
+
+                horario8.setAttribute('data-bs-toggle','popover');
+                horario8.setAttribute('title','Minutos');
+                horario8.setAttribute('data-bs-content',calcular_minutos(segundo_posto[linha_tabela].saida,segundo_posto[linha_tabela].chegada));
             }
             catch(error){
                 console.log(error);
@@ -642,6 +675,8 @@ escrever_tabela = () =>{
         cabecalho15.innerText = nome_primeiro_posto;
         cabecalho16.innerText = 'Descrição';
 
+        th.classList.add('sticky-header');
+
         let tamanho = [];
         tamanho.push(primeiro_posto.length);
         tamanho.push(segundo_posto.length);
@@ -678,7 +713,11 @@ escrever_tabela = () =>{
                 tabelaHorario.innerText = primeiro_posto[linha_tabela].tabela+'  '+primeiro_posto[linha_tabela].descricaoSaida;
                 horario1.innerText = primeiro_posto[linha_tabela].saida;
                 horario2.innerText = primeiro_posto[linha_tabela].chegada;
-                descricaoInfo.innerText = primeiro_posto[linha_tabela].descricaoChegada;
+                descricaoInfo.innerText = primeiro_posto[linha_tabela].descricaoChegada+' - '+primeiro_posto[linha_tabela].empresa;
+
+                horario2.setAttribute('data-bs-toggle','popover');
+                horario2.setAttribute('title','Minutos');
+                horario2.setAttribute('data-bs-content',calcular_minutos(primeiro_posto[linha_tabela].saida,primeiro_posto[linha_tabela].chegada));
             }
             catch(error){
                 console.log(error);
@@ -689,7 +728,11 @@ escrever_tabela = () =>{
                 tabelaHorario2.innerText = segundo_posto[linha_tabela].tabela+'  '+segundo_posto[linha_tabela].descricaoSaida;
                 horario3.innerText = segundo_posto[linha_tabela].saida;
                 horario4.innerText = segundo_posto[linha_tabela].chegada;
-                descricaoInfo2.innerText = segundo_posto[linha_tabela].descricaoChegada;
+                descricaoInfo2.innerText = segundo_posto[linha_tabela].descricaoChegada+' - '+segundo_posto[linha_tabela].empresa;
+
+                horario4.setAttribute('data-bs-toggle','popover');
+                horario4.setAttribute('title','Minutos');
+                horario4.setAttribute('data-bs-content',calcular_minutos(segundo_posto[linha_tabela].saida,segundo_posto[linha_tabela].chegada));
             }
             catch(error){
                 console.log(error);
@@ -700,7 +743,11 @@ escrever_tabela = () =>{
                 tabelaHorario3.innerText = terceiro_posto[linha_tabela].tabela+'  '+terceiro_posto[linha_tabela].descricaoSaida;
                 horario5.innerText = terceiro_posto[linha_tabela].saida;
                 horario6.innerText = terceiro_posto[linha_tabela].chegada;
-                descricaoInfo3.innerText = terceiro_posto[linha_tabela].descricaoChegada;
+                descricaoInfo3.innerText = terceiro_posto[linha_tabela].descricaoChegada+' - '+terceiro_posto[linha_tabela].empresa;
+
+                horario6.setAttribute('data-bs-toggle','popover');
+                horario6.setAttribute('title','Minutos');
+                horario6.setAttribute('data-bs-content',calcular_minutos(terceiro_posto[linha_tabela].saida,terceiro_posto[linha_tabela].chegada));
                 }
             catch(error){
                 console.log(error);
@@ -711,7 +758,11 @@ escrever_tabela = () =>{
                 tabelaHorario4.innerText = quarto_posto[linha_tabela].tabela+'  '+quarto_posto[linha_tabela].descricaoSaida;
                 horario7.innerText = quarto_posto[linha_tabela].saida;
                 horario8.innerText = quarto_posto[linha_tabela].chegada;
-                descricaoInfo4.innerText = quarto_posto[linha_tabela].descricaoChegada;
+                descricaoInfo4.innerText = quarto_posto[linha_tabela].descricaoChegada+' - '+quarto_posto[linha_tabela].empresa;
+
+                horario8.setAttribute('data-bs-toggle','popover');
+                horario8.setAttribute('title','Minutos');
+                horario8.setAttribute('data-bs-content',calcular_minutos(quarto_posto[linha_tabela].saida,quarto_posto[linha_tabela].chegada));
             }
             catch(error){
                 console.log(error);
@@ -724,6 +775,7 @@ escrever_tabela = () =>{
 
     gerar_pdf.disabled = false;
     gerar_planilha.disabled = false;
+    ativar_popovers();
 }
 
 gerar_pdf.onclick = () =>{
@@ -757,7 +809,6 @@ gerar_pdf.onclick = () =>{
 limpar_tabela = () =>{
 
     if(document.getElementById('tabela')){
-        console.log('teste');
 
         primeiro_posto = [];
         segundo_posto = [];
@@ -770,6 +821,10 @@ limpar_tabela = () =>{
         nome_quarto_posto = '';
         tipo_linha = '';
         document.getElementById('tabela').remove();
+        let popovers = document.getElementsByClassName('popover');
+        while(document.getElementsByClassName('popover').length>0){
+            popovers[0].remove();
+        }
     }        
 }
 
@@ -866,7 +921,37 @@ async function escrever_planilha(){
       return `${coluna}${row}`;
     }
 
+    ativar_popovers = () =>{
+        let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+        let popoverList = popoverTriggerList.map(function(popoverTriggerEl){
+            return new bootstrap.Popover(popoverTriggerEl)
+        })
+    }
 
+    calcular_minutos = (valor_primeiro_horario,valor_segundo_horario) =>{
+        let valores_primeiro = valor_primeiro_horario.split(':');
+        let valores_segundo = valor_segundo_horario.split(':');
+
+        let minutos_primeiro = parseInt((valores_primeiro[0]*60))+parseInt(valores_primeiro[1]);
+        let minutos_segundo = parseInt((valores_segundo[0]*60))+parseInt(valores_segundo[1]);
+
+        resultado = minutos_segundo-minutos_primeiro;
+
+        if(resultado<-800){
+            if(valores_segundo[0]=='00'){
+                minutos_segundo = (24*60)+parseInt(valores_segundo[1]);
+                resultado = minutos_segundo-minutos_primeiro;
+                return resultado;
+            }
+            else if(valores_segundo[0]=='01'){
+                minutos_segundo = (25*60)+parseInt(valores_segundo[1]);
+                resultado = minutos_segundo-minutos_primeiro;
+                return resultado;
+            }
+        }
+
+        return resultado;
+    }
    
     
 
