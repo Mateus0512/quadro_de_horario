@@ -32,9 +32,9 @@ dia_atual = () =>{
 dia_atual();
 
 async function listar_linhas(){
-    let url  = 'http://gistapis.etufor.ce.gov.br:8081/api/linhas/';
-    let response = await fetch(url);
-    let lista_linhas = await response.json();
+    let url  = 'https://api-jjcy.onrender.com/linhas/';
+    let lista_linhas = await fetch(url);
+    
     for(let i=0;i<lista_linhas.length;i++){
         linhas.innerHTML += `
         <option>`+lista_linhas[i].numeroNome+`</option>
@@ -45,12 +45,12 @@ listar_linhas();
 
 async function buscar_programacao(){
     limpar_tabela();
-    let url = 'http://gistapis.etufor.ce.gov.br:8081/api/Programacao/';
+    let url = 'https://api-jjcy.onrender.com/Programacao/';
     let numero_linha = linha.value;
     
     numero_linha = numero_linha.split('-');
-    let response = await fetch(url+numero_linha[0]+'?data='+data.value.split('-').join(''));
-    let programacao = await response.json();
+    let programacao = await fetch(url+numero_linha[0]+'?data='+data.value.split('-').join(''));
+    
     console.log(programacao);
 
     if(programacao.Message){
