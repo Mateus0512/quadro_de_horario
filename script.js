@@ -33,7 +33,8 @@ dia_atual();
 
 async function listar_linhas(){
     let url  = 'https://api-mpu4.onrender.com/linhas/';
-    let lista_linhas = await fetch(url);
+    let response = await fetch(url);
+    let lista_linhas = await response.json();
     
     for(let i=0;i<lista_linhas.length;i++){
         linhas.innerHTML += `
@@ -49,8 +50,8 @@ async function buscar_programacao(){
     let numero_linha = linha.value;
     
     numero_linha = numero_linha.split('-');
-    let programacao = await fetch(url+numero_linha[0]+'?data='+data.value.split('-').join(''));
-    
+    let response = await fetch(url+numero_linha[0]+'?data='+data.value.split('-').join(''));
+    let programacao = await response.json();
     console.log(programacao);
 
     if(programacao.Message){
