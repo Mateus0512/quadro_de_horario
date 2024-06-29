@@ -32,7 +32,7 @@ dia_atual = () =>{
 dia_atual();
 
 async function listar_linhas(){
-    let url  = 'https://api-jjcy.onrender.com/linhas/';
+    let url  = 'https://api-mpu4.onrender.com/linhas/';
     let lista_linhas = await fetch(url);
     
     for(let i=0;i<lista_linhas.length;i++){
@@ -45,7 +45,7 @@ listar_linhas();
 
 async function buscar_programacao(){
     limpar_tabela();
-    let url = 'https://api-jjcy.onrender.com/Programacao/';
+    let url = 'https://api-mpu4.onrender.com/Programacao/';
     let numero_linha = linha.value;
     
     numero_linha = numero_linha.split('-');
