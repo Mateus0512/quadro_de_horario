@@ -32,7 +32,7 @@ dia_atual = () =>{
 dia_atual();
 
 async function listar_linhas(){
-    let url  = 'https://api-mpu4.onrender.com/linhas/';
+    let url  = 'https://api-lyart-chi.vercel.app/linhas/';
     let response = await fetch(url);
     let lista_linhas = await response.json();
     
@@ -46,7 +46,7 @@ listar_linhas();
 
 async function buscar_programacao(){
     limpar_tabela();
-    let url = 'https://api-mpu4.onrender.com/Programacao/';
+    let url = 'https://api-lyart-chi.vercel.app/Programacao/';
     let numero_linha = linha.value;
     
     numero_linha = numero_linha.split('-');
