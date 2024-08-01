@@ -46,7 +46,7 @@ listar_linhas();
 
 async function buscar_programacao(){
     limpar_tabela();
-    let url = 'https://api-lyart-chi.vercel.app/Programacao/';
+    let url = 'http://gistapis.etufor.ce.gov.br:8081/api/Programacao/';
     let numero_linha = linha.value;
     
     numero_linha = numero_linha.split('-');
